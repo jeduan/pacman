@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <title>HTML5 Pacman</title>
     
+    <script src="modernizr-2.0.6.min.js"></script>
+    
     <style type="text/css">
       @font-face {
 	    font-family: 'BDCartoonShoutRegular';
@@ -32,14 +34,13 @@
   
   <div id="shim">shim for font face</div>
 
-  <h1>HTML5 Pacman</h1>
+  <h1>Anorexic Pacman</h1>
 
-  <a href="http://arandomurl.com/">Writeup</a> |
-  Code on <a href="http://arandomurl.com/">Github</a>
 
   <div id="pacman"></div>
   <script src="pacman.js"></script>
-  <script src="modernizr-1.5.min.js"></script>
+
+  Code on <a href="http://github.com/jeduan/pacman">Github</a>
 
   <script>
 
@@ -50,7 +51,7 @@
       window.setTimeout(function () { PACMAN.init(el, "./"); }, 0);
     } else { 
       el.innerHTML = "Sorry, needs a decent browser<br /><small>" + 
-        "(firefox 3.6+, Chrome 4+, Opera 10+ and Safari 4+)</small>";
+        "(Firefox, Chrome, Opera or Safari)</small>";
     }
   </script>
 
