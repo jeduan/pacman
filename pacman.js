@@ -433,16 +433,20 @@ Pacman.User = function (game, map) {
         if ((isMidSquare(position.y) || isMidSquare(position.x)) &&
             block === Pacman.BISCUIT || block === Pacman.PILL) {
             
-            map.setBlock(nextWhole, Pacman.EMPTY);           
-            addScore((block === Pacman.BISCUIT) ? 10 : 50);
-            eaten += 1;
-            
-            if (eaten === 182) {
-                game.completedLevel();
-            }
-            
-            if (block === Pacman.PILL) { 
-                game.eatenPill();
+            if (block === Pacman.BISCUIT && eaten > 3) {
+              console.log('anorexico');
+            } else {
+              eaten += 1;
+              map.setBlock(nextWhole, Pacman.EMPTY);           
+              addScore((block === Pacman.BISCUIT) ? 10 : 50);
+              
+              if (eaten === 182) {
+                  game.completedLevel();
+              }
+              
+              if (block === Pacman.PILL) { 
+                  game.eatenPill();
+              }
             }
         }   
                 
