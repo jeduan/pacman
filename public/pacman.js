@@ -434,7 +434,7 @@ Pacman.User = function (game, map) {
             block === Pacman.BISCUIT || block === Pacman.PILL) {
             
             if (block === Pacman.BISCUIT && eaten > 3) {
-              console.log('anorexico');
+              // nothing, pacman is anorexic
             } else {
               eaten += 1;
               map.setBlock(nextWhole, Pacman.EMPTY);           
