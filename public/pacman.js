@@ -284,7 +284,8 @@ Pacman.User = function (game, map) {
         due       = null, 
         lives     = null,
         score     = 5,
-        keyMap    = {};
+        keyMap    = {},
+        isAnorexic = false;
     
     keyMap[KEY.ARROW_LEFT]  = LEFT;
     keyMap[KEY.ARROW_UP]    = UP;
@@ -413,6 +414,10 @@ Pacman.User = function (game, map) {
         if (onGridSquare(position) && map.isWallSpace(next(npos, direction))) {
             direction = NONE;
         }
+        
+        if (isAnorexic && map.block(next(npos, direction)) == Pacman.BISCUIT) {
+            direction = NONE;
+        }
 
         if (direction === NONE) {
             return {"new" : position, "old" : position};
@@ -429,17 +434,21 @@ Pacman.User = function (game, map) {
         position = npos;        
         nextWhole = next(position, direction);
         
-        block = map.block(nextWhole);        
+        block = map.block(nextWhole);
         
         if ((isMidSquare(position.y) || isMidSquare(position.x)) &&
             block === Pacman.BISCUIT || block === Pacman.PILL) {
             
-            if (block === Pacman.BISCUIT && eaten > 3) {
+            if (block === Pacman.BISCUIT && isAnorexic) {
               // nothing, pacman is anorexic
             } else {
               eaten += 1;
               map.setBlock(nextWhole, Pacman.EMPTY);           
               addScore((block === Pacman.BISCUIT) ? 10 : 50);
+              
+              if (eaten >= 3) {
+                  isAnorexic = true;
+              }
               
               if (eaten === 182) {
                   game.completedLevel();
