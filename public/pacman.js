@@ -312,7 +312,8 @@ Pacman.User = function (game, map) {
 
     function initUser() {
         score = 0;
-        lives = 3;
+//        lives = 3;
+        lives = 1;
         newLevel();
     }
     
@@ -885,28 +886,14 @@ var PACMAN = (function () {
         ctx.fillRect(0, topLeft, (map.width * map.blockSize), 30);
         
         ctx.fillStyle = "#FFFF00";
-
-        for (var i = 0, len = user.getLives(); i < len; i++) {
-            ctx.fillStyle = "#FFFF00";
-            ctx.beginPath();
-            ctx.moveTo(150 + (25 * i) + map.blockSize / 2,
-                       (topLeft+1) + map.blockSize / 2);
-            
-            ctx.arc(150 + (25 * i) + map.blockSize / 2,
-                    (topLeft+1) + map.blockSize / 2,
-                    map.blockSize / 2, Math.PI * 0.25, Math.PI * 1.75, false);
-            ctx.fill();
-        }
+        ctx.font = "16px SilkscreenNormal";
+        ctx.fillText(user.getLives() + " UP", 260, textBase);
+        ctx.fillText(user.theScore() + " CALORIES", 10, textBase);
 
         ctx.fillStyle = !soundDisabled() ? "#00FF00" : "#FF0000";
         ctx.font = "bold 16px sans-serif";
-        //ctx.fillText("♪", 10, textBase);
-        ctx.fillText("s", 10, textBase);
-
-        ctx.fillStyle = "#FFFF00";
-        ctx.font      = "16px SilkscreenNormal";
-        ctx.fillText("Calorias: " + user.theScore(), 30, textBase);
-        ctx.fillText("Nivel: " + level, 260, textBase);
+        ctx.fillText("♪", 320, textBase);
+        //ctx.fillText("s", 320, textBase);
     }
 
     function redrawBlock(pos) {
