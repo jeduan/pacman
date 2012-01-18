@@ -838,6 +838,7 @@ var PACMAN = (function () {
     }    
 
     function startNewGame() {
+        timer = window.setInterval(mainLoop, 1000 / Pacman.FPS);
         setState(WAITING);
         level = 1;
         user.reset();
@@ -968,7 +969,7 @@ var PACMAN = (function () {
         } else if (state === WAITING && stateChanged) {            
             stateChanged = false;
             map.draw(ctx);
-            dialog("Aprieta N para iniciar");            
+            dialog("Press N to Start");            
         } else if (state === EATEN_PAUSE && 
                    (tick - timerStart) > (Pacman.FPS / 3)) {
             map.draw(ctx);
@@ -986,7 +987,7 @@ var PACMAN = (function () {
             }
         } else if (state === COUNTDOWN) {
             
-            diff = 5 + Math.floor((timerStart - tick) / Pacman.FPS);
+            diff = 4 + Math.floor((timerStart - tick) / Pacman.FPS);
             
             if (diff === 0) {
                 map.draw(ctx);
@@ -1052,7 +1053,7 @@ var PACMAN = (function () {
             ghosts.push(ghost);
         }
         
-        map.draw(ctx);
+        //map.draw(ctx);
         dialog("Loading ...");
 
         var extension = Modernizr.audio.ogg ? 'ogg' : 'mp3';
@@ -1081,12 +1082,13 @@ var PACMAN = (function () {
         
     function loaded() {
 
-        dialog("Presiona N para iniciar");
+        dialog("Press N to start");
         
         document.addEventListener("keydown", keyDown, true);
         document.addEventListener("keypress", keyPress, true); 
         
-        timer = window.setInterval(mainLoop, 1000 / Pacman.FPS);
+        //timer = window.setInterval(mainLoop, 1000 / Pacman.FPS);
+        // TODO: averiguar si esta es la mejor forma o si mejor dibujamos sobre el canvas
     };
     
     return {
