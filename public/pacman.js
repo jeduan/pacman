@@ -316,6 +316,7 @@ Pacman.User = function (game, map) {
 //        lives = 3;
         lives = 1;
         newLevel();
+        isAnorexic = false;
     }
     
     function newLevel() {
@@ -838,6 +839,7 @@ var PACMAN = (function () {
     }    
 
     function startNewGame() {
+        window.clearInterval(timer);
         timer = window.setInterval(mainLoop, 1000 / Pacman.FPS);
         setState(WAITING);
         level = 1;
