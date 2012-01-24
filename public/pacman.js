@@ -305,6 +305,9 @@ Pacman.User = function (game, map) {
 
     function loseLife() { 
         lives -= 1;
+        if (lives <= 0) {
+          jQuery('body').trigger('pacman:dead');
+        }
     };
 
     function getLives() {
@@ -840,6 +843,7 @@ var PACMAN = (function () {
 
     function startNewGame() {
         setState(WAITING);
+        jQuery('body').trigger('pacman:newgame');
         level = 1;
         user.reset();
         map.reset();
@@ -969,7 +973,7 @@ var PACMAN = (function () {
         } else if (state === WAITING && stateChanged) {            
             stateChanged = false;
             map.draw(ctx);
-            dialog("Press N to Start");            
+            jQuery('body').trigger('pacman:loaded');
         } else if (state === EATEN_PAUSE && 
                    (tick - timerStart) > (Pacman.FPS / 3)) {
             map.draw(ctx);
@@ -1054,7 +1058,6 @@ var PACMAN = (function () {
         }
         
         map.draw(ctx);
-        dialog("Loading ...");
 
         var extension = Modernizr.audio.ogg ? 'ogg' : 'mp3';
 
@@ -1082,7 +1085,7 @@ var PACMAN = (function () {
         
     function loaded() {
 
-        dialog("Press N to start");
+        jQuery('body').trigger('pacman:loaded');
         
         document.addEventListener("keydown", keyDown, true);
         document.addEventListener("keypress", keyPress, true); 

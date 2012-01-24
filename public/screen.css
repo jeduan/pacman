@@ -18,10 +18,41 @@
   font-style: normal;
 }
 
-#pacman {
+.wrap {
+  width: 342px;
+  height: 450px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.inner-wrap {
+  width:  1042px;
+  height: 450px;
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.panel {
   height:450px;
   width:342px;
-  margin:20px auto;
+  float: left;
+  font-family:  SilkscreenNormal;
+  font-size: 18px;
+}
+
+#start.panel {
+  line-height: 320px;
+  text-align: center;
+  
+}
+
+#pacman.panel {
+  
 }
 
 #shim { 
