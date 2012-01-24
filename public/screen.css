@@ -55,6 +55,51 @@
   
 }
 
+#highscores h2 {
+  text-align: center;
+}
+
+#highscores table {
+  width: 320px;
+  font-size: 22px;
+  margin: 0 auto;
+}
+
+#highscores table td:first-child {
+  width: 30%;
+}
+
+#highscores table td:nth-child(2) {
+  width: 30%;
+}
+
+#highscores table th {
+  text-align: center;
+}
+
+#highscores table tr:nth-child(6),
+#highscores thead tr {
+  color: #F8F801;
+}
+
+#highscores table tbody tr:first-child {color: #DCDCDC;}
+#highscores table tbody tr:nth-child(2) {color: #FC0304;}
+#highscores table tbody tr:nth-child(3) {color: #FCB444;}
+#highscores table tbody tr:nth-child(4) {color: #FCB494;}
+#highscores table tbody tr:nth-child(5) {color: #F4CC34;}
+#highscores table tbody tr:nth-child(7) {color: #13B42C;}
+#highscores table tbody tr:nth-child(8) {color: #06DEC2;}
+#highscores table tbody tr:nth-child(9) {color: #119CB4;}
+#highscores table tbody tr:nth-child(10) {color: #09D423;}
+
+#highscores table th:nth-child(3) {
+  text-align: right;
+}
+#highscores table td:nth-child(3) {
+  width: 40%;
+  text-align: right;
+}
+
 #shim { 
   font-family: SilkscreenNormal, monospace; 
   position:absolute;
