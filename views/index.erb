@@ -17,22 +17,11 @@
 
 
   <div id="pacman"></div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="ui.js" type="text/javascript"></script>
   <script src="pacman.js"></script>
 
   <!-- Code on <a href="http://github.com/jeduan/pacman">Github</a> -->
-
-  <script>
-
-    var el = document.getElementById("pacman");
-
-    if (Modernizr.canvas && Modernizr.localstorage && 
-        Modernizr.audio && (Modernizr.audio.ogg || Modernizr.audio.mp3)) {
-      window.setTimeout(function () { PACMAN.init(el, "./"); }, 0);
-    } else { 
-      el.innerHTML = "Sorry, needs a decent browser<br /><small>" + 
-        "(Firefox, Chrome, Opera or Safari)</small>";
-    }
-  </script>
 
 </body>
 </html>

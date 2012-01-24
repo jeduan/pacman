@@ -839,8 +839,6 @@ var PACMAN = (function () {
     }    
 
     function startNewGame() {
-        window.clearInterval(timer);
-        timer = window.setInterval(mainLoop, 1000 / Pacman.FPS);
         setState(WAITING);
         level = 1;
         user.reset();
@@ -1055,7 +1053,7 @@ var PACMAN = (function () {
             ghosts.push(ghost);
         }
         
-        //map.draw(ctx);
+        map.draw(ctx);
         dialog("Loading ...");
 
         var extension = Modernizr.audio.ogg ? 'ogg' : 'mp3';
@@ -1089,7 +1087,7 @@ var PACMAN = (function () {
         document.addEventListener("keydown", keyDown, true);
         document.addEventListener("keypress", keyPress, true); 
         
-        //timer = window.setInterval(mainLoop, 1000 / Pacman.FPS);
+        timer = window.setInterval(mainLoop, 1000 / Pacman.FPS);
         // TODO: averiguar si esta es la mejor forma o si mejor dibujamos sobre el canvas
     };
     
