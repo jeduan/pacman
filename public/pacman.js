@@ -278,15 +278,17 @@ Pacman.Ghost = function (game, map, colour) {
 
 Pacman.User = function (game, map) {
 
-    var position   = null,
-        direction  = null,
-        eaten      = null,
-        due        = null, 
-        lives      = null,
-        score      = 5,
-        keyMap     = {},
-        isAnorexic = false,
-        hasImage   = false;;
+    var position     = null,
+        direction    = null,
+        eaten        = null,
+        due          = null, 
+        lives        = null,
+        score        = 5,
+        keyMap       = {},
+        isAnorexic   = false,
+        hasImage     = false
+        anorexicImg = new Image();
+    anorexicImg.src = 'yanoquiero.png';
 
     keyMap[KEY.ARROW_LEFT]  = LEFT;
     keyMap[KEY.ARROW_UP]    = UP;
@@ -404,8 +406,8 @@ Pacman.User = function (game, map) {
         if (due !== direction) {
             npos = getNewCoord(due, position);
 
-            if (isOnSamePlane(due, direction) || 
-                (onGridSquare(position) && 
+            if (isOnSamePlane(due, direction) ||
+                (onGridSquare(position) &&
                  map.isFloorSpace(next(npos, due)))) {
                 direction = due;
             } else {
@@ -424,7 +426,6 @@ Pacman.User = function (game, map) {
         if (isAnorexic && map.block(next(npos, direction)) == Pacman.BISCUIT) {
           if (!hasImage){
             hasImage = true;
-            console.log('desplegar imagen', npos);
             setTimeout(function() {
               hasImage = false;
               console.log('esconder imagen');
@@ -468,7 +469,7 @@ Pacman.User = function (game, map) {
                   game.completedLevel();
               }
 
-              if (block === Pacman.PILL) { 
+              if (block === Pacman.PILL) {
                   game.eatenPill();
               }
             }
@@ -537,6 +538,9 @@ Pacman.User = function (game, map) {
                 Math.PI * angle.end, angle.direction);
 
         ctx.fill();
+        if (hasImage) {
+          ctx.drawImage(anorexicImg, position.x + 10, position.y - 20);
+        }
     };
 
     initUser();
