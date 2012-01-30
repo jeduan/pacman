@@ -286,9 +286,7 @@ Pacman.User = function (game, map) {
         score        = 5,
         keyMap       = {},
         isAnorexic   = false,
-        hasImage     = false
-        anorexicImg = new Image();
-    anorexicImg.src = 'yanoquiero.png';
+        hasImage     = false;
 
     keyMap[KEY.ARROW_LEFT]  = LEFT;
     keyMap[KEY.ARROW_UP]    = UP;
@@ -425,10 +423,9 @@ Pacman.User = function (game, map) {
 
         if (isAnorexic && map.block(next(npos, direction)) == Pacman.BISCUIT) {
           if (!hasImage){
-            hasImage = true;
+            enableImage();
             setTimeout(function() {
-              hasImage = false;
-              console.log('esconder imagen');
+              disableImage();
             }, 2000);
           }
           direction = NONE;
@@ -480,6 +477,16 @@ Pacman.User = function (game, map) {
             "old" : oldPosition
         };
     };
+
+    function enableImage() {
+      hasImage = true;
+      $('body').trigger('pacman:image:enable');
+    }
+
+    function disableImage() {
+      hasImage = false;
+      $('body').trigger('pacman:image:disable');
+    }
 
     function isMidSquare(x) {
         var rem = x % 10;
@@ -538,9 +545,6 @@ Pacman.User = function (game, map) {
                 Math.PI * angle.end, angle.direction);
 
         ctx.fill();
-        if (hasImage) {
-          ctx.drawImage(anorexicImg, position.x + 10, position.y - 20);
-        }
     };
 
     initUser();

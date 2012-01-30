@@ -2,12 +2,6 @@
 	http://localhost:9292/screen.css */
 
 @font-face {
-  font-family: 'BDCartoonShoutRegular';
-    src: url('BD_Cartoon_Shout-webfont.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
   font-family: 'SilkscreenNormal';
   src: url('slkscr-webfont.eot');
   src: url('slkscr-webfont.eot?#iefix') format('embedded-opentype'),
@@ -48,11 +42,10 @@
 #start.panel {
   line-height: 320px;
   text-align: center;
-  
 }
 
 #pacman.panel {
-  
+  position: relative;
 }
 
 #highscores h2 {
@@ -128,6 +121,15 @@ body {
  font-family:sans-serif;
  background: black;
  color: white;
+}
+
+.message {
+  position: absolute;
+  left: 90px;
+  top: 90px;
+  width: 200px;
+  height: 120px;
+  background: url('yanoquiero.png') 0 0 no-repeat;
 }
 
 a { text-decoration:none; }
