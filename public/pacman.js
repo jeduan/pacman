@@ -278,14 +278,15 @@ Pacman.Ghost = function (game, map, colour) {
 
 Pacman.User = function (game, map) {
 
-    var position  = null,
-        direction = null,
-        eaten     = null,
-        due       = null, 
-        lives     = null,
-        score     = 5,
-        keyMap    = {},
-        isAnorexic = false;
+    var position   = null,
+        direction  = null,
+        eaten      = null,
+        due        = null, 
+        lives      = null,
+        score      = 5,
+        keyMap     = {},
+        isAnorexic = false,
+        hasImage   = false;;
 
     keyMap[KEY.ARROW_LEFT]  = LEFT;
     keyMap[KEY.ARROW_UP]    = UP;
@@ -320,6 +321,7 @@ Pacman.User = function (game, map) {
         lives = 1;
         newLevel();
         isAnorexic = false;
+        hasImage = false;
     }
 
     function newLevel() {
@@ -420,7 +422,15 @@ Pacman.User = function (game, map) {
         }
 
         if (isAnorexic && map.block(next(npos, direction)) == Pacman.BISCUIT) {
-            direction = NONE;
+          if (!hasImage){
+            hasImage = true;
+            console.log('desplegar imagen', npos);
+            setTimeout(function() {
+              hasImage = false;
+              console.log('esconder imagen');
+            }, 2000);
+          }
+          direction = NONE;
         }
 
         if (direction === NONE) {
