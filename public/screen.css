@@ -92,11 +92,22 @@
 #highscores table tbody tr:nth-child(9) {color: #119CB4;}
 #highscores table tbody tr:nth-child(10) {color: #09D423;}
 
-#highscores table th:nth-child(3) {
+#highscores table th:nth-child(3),
+#highscores table th:nth-child(2) {
   text-align: right;
 }
 #highscores table td:nth-child(3) {
   width: 40%;
+  text-align: right;
+}
+
+#name_input {
+  background: black;
+  border: none;
+  color: #09D423;
+  font-family: SilkscreenNormal;
+  font-size: 22px;
+  width: 100px;
   text-align: right;
 }
 

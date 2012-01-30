@@ -8,9 +8,13 @@ var $el = $("#pacman"),
         break;
       case 'scores':
         $wrap.css('left', '-684px');
+        setTimeout(function() {
+          $('#name_input').focus();
+        }, 1000)
         break;
       default:
-        $wrap.css('left', '-342px');    
+        $wrap.css('left', '-342px');
+        $('#name_input').val('');
     }
   };
   
