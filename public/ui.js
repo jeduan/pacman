@@ -17,7 +17,9 @@ $(function() {
         default:
           $wrap.css('left', '-342px');
           $('#name_input').val('');
-          $img.hide();
+          if ( $img.is(':visible') ){
+            $img.hide();
+          }
       }
     };
 
@@ -28,11 +30,13 @@ $(function() {
   }).on('pacman:dead', function() {
     display('scores');
   }).on('pacman:image:enable', function() {
-    $img.fadeIn('slow');
-    console.log('mostrando imagen');
+    if (! $img.is(':visible')) {
+      $img.show();
+    }
   }).on('pacman:image:disable', function() {
-    $img.hide();
-    console.log('escondiendo imagen');
+    if ( $img.is(':visible') ){
+      $img.hide();
+    }
   });
 
 
