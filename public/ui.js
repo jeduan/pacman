@@ -1,7 +1,15 @@
 $(function() {
   var $el = $("#pacman"),
     $start = $('#start'),
-    $img = $('<div/>').appendTo('#pacman').addClass('message').hide(),
+    $img = $('<div/>').addClass('message').appendTo('#pacman').hide(),
+    frases = [
+      'Ya no quiero más, gracias',
+      'Estoy llenísimo',
+      'En serio, comí antes de venir'
+    ],
+    frase = function() {
+      return frases[Math.floor(Math.random() * frases.length)];
+    }
     display = function(to) {
       var $wrap = $('.inner-wrap');
       switch (to) {
@@ -12,7 +20,7 @@ $(function() {
           $wrap.css('left', '-684px');
           setTimeout(function() {
             $('#name_input').focus();
-          }, 1000)
+          }, 1000);
           break;
         default:
           $wrap.css('left', '-342px');
@@ -31,7 +39,7 @@ $(function() {
     display('scores');
   }).on('pacman:image:enable', function() {
     if (! $img.is(':visible')) {
-      $img.show();
+      $img.text(frase()).show();
     }
   }).on('pacman:image:disable', function() {
     if ( $img.is(':visible') ){
