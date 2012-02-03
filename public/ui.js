@@ -3,7 +3,7 @@ $(function() {
     $start = $('#start'),
     $img = $('<div/>').addClass('message').appendTo('#pacman').hide(),
     frases = [
-      'Ya no quiero más, gracias',
+      'Ya no quiero mas, gracias',
       'Estoy llenísimo',
       'En serio, comí antes de venir'
     ],
@@ -32,7 +32,9 @@ $(function() {
     };
 
   $('body').on('pacman:loaded', function() {
-    $start.text('Press N');
+    var $button = $('<a />').addClass('start button')
+    .text('Click here to start');
+    $start.html($button);
   }).on('pacman:newgame', function() {
     display();
   }).on('pacman:dead', function() {
@@ -45,6 +47,8 @@ $(function() {
     if ( $img.is(':visible') ){
       $img.hide();
     }
+  }).on('click', 'a.start.button, a.replay.button', function(){
+    PACMAN.startNewGame();
   });
 
 

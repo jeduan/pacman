@@ -1,5 +1,4 @@
-/* @override 
-	http://localhost:9292/screen.css */
+/* @override http://localhost:9292/screen.css */
 
 @font-face {
   font-family: 'SilkscreenNormal';
@@ -17,6 +16,13 @@
   height: 450px;
   position: relative;
   overflow-x: hidden;
+}
+
+a.start.button {
+  display: inline;
+  cursor: pointer;
+  color: white;
+  background: transparent;
 }
 
 .inner-wrap {
@@ -94,6 +100,27 @@
   text-align: right;
 }
 
+p.share {
+  width: 320px;
+  margin: 20px auto 0;
+}
+
+a.button {
+  display: inline-block;
+  padding: 10px;
+  background: white;
+  color: black;
+  margin-left: 5px;
+}
+
+a.tweet.button {
+  color: #2ABDFF;
+}
+
+a.replay.button {
+  cursor: pointer;
+}
+
 #name_input {
   background: black;
   border: none;
@@ -104,20 +131,20 @@
   text-align: right;
 }
 
-#shim { 
-  font-family: SilkscreenNormal, monospace; 
+#shim {
+  font-family: SilkscreenNormal, monospace;
   position:absolute;
   visibility:hidden
 }
 
-h1 { 
-  font-family: SilkscreenNormal, monospace; 
-  text-align:center; 
+h1 {
+  font-family: SilkscreenNormal, monospace;
+  text-align:center;
 }
 
 body {
- width:342px; 
- margin:0px auto; 
+ width:342px;
+ margin:0px auto;
  font-family:sans-serif;
  background: black;
  color: white;

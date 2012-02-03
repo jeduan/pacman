@@ -831,7 +831,7 @@ var PACMAN = (function () {
 
     function drawScore(text, position) {
         ctx.fillStyle = "#FFFFFF";
-        ctx.font      = "12px BDCartoonShoutRegular";
+        ctx.font      = "12px SilkscreenNormal";
         ctx.fillText(text, 
                      (position["new"]["x"] / 10) * map.blockSize, 
                      ((position["new"]["y"] + 5) / 10) * map.blockSize);
@@ -869,23 +869,27 @@ var PACMAN = (function () {
         startLevel();
     }
 
+    function toggleSound() {
+      audio.disableSound();
+      localStorage["soundDisabled"] = !soundDisabled();
+    }
+
+    function togglePause() {
+      if (state === PAUSE) {
+        audio.resume();
+        map.draw(ctx);
+        setState(stored);
+      } else {
+        stored = state;
+        setState(PAUSE);
+        audio.pause();
+        map.draw(ctx);
+        dialog("Paused");
+      }
+    }
+
     function keyDown(e) {
-        if (e.keyCode === KEY.N) {
-            startNewGame();
-        } else if (e.keyCode === KEY.S) {
-            audio.disableSound();
-            localStorage["soundDisabled"] = !soundDisabled();
-        } else if (e.keyCode === KEY.P && state === PAUSE) {
-            audio.resume();
-            map.draw(ctx);
-            setState(stored);
-        } else if (e.keyCode === KEY.P) {
-            stored = state;
-            setState(PAUSE);
-            audio.pause();
-            map.draw(ctx);
-            dialog("Paused");
-        } else if (state !== PAUSE) {
+        if (state !== PAUSE) {
             return user.keyDown(e);
         }
         return true;
@@ -1113,7 +1117,10 @@ var PACMAN = (function () {
     };
 
     return {
-        "init" : init
+        "init" : init,
+        "startNewGame": startNewGame,
+        "toggleSound": toggleSound,
+        "togglePause": togglePause
     };
 
 }());
