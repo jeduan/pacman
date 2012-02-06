@@ -5,10 +5,16 @@ $(function() {
     frases = [
       'Ya no quiero mas, gracias',
       'Estoy llenísimo',
-      'En serio, comí antes de venir'
+      'En serio, comi antes de venir'
     ],
+    ultimaFrase = null,
     frase = function() {
-      return frases[Math.floor(Math.random() * frases.length)];
+      var linea = frases[Math.floor(Math.random() * frases.length)];
+      if (linea != ultimaFrase) {
+        ultimaFrase = linea;
+        return linea;
+      }
+      return frase();
     }
     display = function(to) {
       var $wrap = $('.inner-wrap');
@@ -51,12 +57,24 @@ $(function() {
     PACMAN.startNewGame();
   });
 
+  $('a.tweet.button').on('click', function(e) {
+    if ($('#name_input').val() != ''){
+      var href = $(this).attr('href');
+      href = href.replace(
+        href.substr(href.lastIndexOf('=')+1), 
+        escape(
+          $('#name_input').val() + ' comio 30 calorias en Anorexic Pacman '
+        ));
+      $(this).attr('href', href);
+    }
+  });
 
-  if (Modernizr.canvas && Modernizr.localstorage && 
+
+  if (Modernizr.canvas && Modernizr.localstorage &&
       Modernizr.audio && (Modernizr.audio.ogg || Modernizr.audio.mp3)) {
     window.setTimeout(function () { PACMAN.init($el.get(0), "./"); }, 0);
-  } else { 
-    $start.html = "Sorry, needs a decent browser<br /><small>" + 
-      "(Firefox, Chrome, Opera or Safari)</small>";
+  } else {
+    $start.html = "Anorexic Pacman solo corre en <br />" +
+      "<small>Firefox, Chrome, Opera y Safari</small>";
   }
 });

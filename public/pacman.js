@@ -33,7 +33,7 @@ Pacman.Ghost = function (game, map, colour) {
 
     function getNewCoord(dir, current) {
 
-        var speed  = isVunerable() ? 1 : isHidden() ? 4 : 2,
+        var speed  = isVunerable() ? 1 : isHidden() ? 3 : 2,
             xSpeed = (dir === LEFT && -speed || dir === RIGHT && speed || 0),
             ySpeed = (dir === DOWN && speed || dir === UP && -speed || 0);
 
