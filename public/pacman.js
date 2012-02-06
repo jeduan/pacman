@@ -423,7 +423,7 @@ Pacman.User = function (game, map) {
 
         if (isAnorexic && map.block(next(npos, direction)) == Pacman.BISCUIT) {
           if (!hasImage){
-            enableImage();
+            enableImage(npos);
             setTimeout(function() {
               disableImage();
             }, 2000);
@@ -478,9 +478,9 @@ Pacman.User = function (game, map) {
         };
     };
 
-    function enableImage() {
+    function enableImage(position) {
       hasImage = true;
-      $('body').trigger('pacman:image:enable');
+      $('body').trigger('pacman:image:enable', position);
     }
 
     function disableImage() {

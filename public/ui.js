@@ -45,7 +45,8 @@ $(function() {
     display();
   }).on('pacman:dead', function() {
     display('scores');
-  }).on('pacman:image:enable', function() {
+  }).on('pacman:image:enable', function(ev, position) {
+    position && $img.css('left', (342/202) * position.x - 15);
     if (! $img.is(':visible')) {
       $img.text(frase()).show();
     }
